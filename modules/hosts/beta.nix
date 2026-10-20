@@ -14,43 +14,43 @@ in
       den.aspects.calagopus-wings
     ];
     nixos =
-    let
-      grokbotKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPsbsGrkT0zrAUTcjWoQTeIru8OUoIuAmO2sfQl18kgV homeit-grokbot@plantenga";
-    in
-    {
-      users.users.rooq = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" ];
-        openssh.authorizedKeys.keys = [ grokbotKey ];
-      };
-      users.users.root.openssh.authorizedKeys.keys = [ grokbotKey ];
-
-      # No DHCP on this network
-      networking.useDHCP = false;
-      systemd.network = {
-        enable = true;
-        networks."10-wan" = {
-          matchConfig.MACAddress = net.mac;
-          address = [ "${net.address}/${toString net.prefixLength}" ];
-          routes = [
-            {
-              Gateway = net.gateway;
-              GatewayOnLink = true;
-            }
-          ];
-          networkConfig.DNS = [
-            "1.1.1.1"
-            "8.8.8.8"
-          ];
-          linkConfig.RequiredForOnline = "routable";
+      let
+        grokbotKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPsbsGrkT0zrAUTcjWoQTeIru8OUoIuAmO2sfQl18kgV";
+      in
+      {
+        users.users.rooq = {
+          isNormalUser = true;
+          extraGroups = [ "wheel" ];
+          openssh.authorizedKeys.keys = [ grokbotKey ];
         };
-      };
-      networking.nameservers = [
-        "1.1.1.1"
-        "8.8.8.8"
-      ];
+        users.users.root.openssh.authorizedKeys.keys = [ grokbotKey ];
 
-      system.stateVersion = "26.05";
-    };
+        # No DHCP on this network
+        networking.useDHCP = false;
+        systemd.network = {
+          enable = true;
+          networks."10-wan" = {
+            matchConfig.MACAddress = net.mac;
+            address = [ "${net.address}/${toString net.prefixLength}" ];
+            routes = [
+              {
+                Gateway = net.gateway;
+                GatewayOnLink = true;
+              }
+            ];
+            networkConfig.DNS = [
+              "1.1.1.1"
+              "8.8.8.8"
+            ];
+            linkConfig.RequiredForOnline = "routable";
+          };
+        };
+        networking.nameservers = [
+          "1.1.1.1"
+          "8.8.8.8"
+        ];
+
+        system.stateVersion = "26.05";
+      };
   };
 }
