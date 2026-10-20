@@ -13,7 +13,18 @@ in
       den.aspects.calagopus-panel
       den.aspects.calagopus-wings
     ];
-    nixos = {
+    nixos =
+    let
+      grokbotKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPsbsGrkT0zrAUTcjWoQTeIru8OUoIuAmO2sfQl18kgV homeit-grokbot@plantenga";
+    in
+    {
+      users.users.rooq = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+        openssh.authorizedKeys.keys = [ grokbotKey ];
+      };
+      users.users.root.openssh.authorizedKeys.keys = [ grokbotKey ];
+
       # No DHCP on this network
       networking.useDHCP = false;
       systemd.network = {
