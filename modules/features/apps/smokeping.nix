@@ -128,12 +128,10 @@
         webService = true;
         cgiUrl = "https://${domain}/smokeping.fcgi";
         owner = "Herke Plantenga";
-        ownerEmail = "noc@plantenga.net";
+        ownerEmail = "noc@novoserve.com";
         presentationTemplate = "${./smokeping/basepage.html}";
 
         # 4032*300s = 14d raw; 4320*1h = 180d; 1440*12h = 720d (~2y).
-        # NOTES asked for about 4 years of 12h data; the reference sketch set
-        # 1440. Left that way so it can be changed before the first deploy.
         # Changing step, pings, or these rows later means replacing the RRDs.
         databaseConfig = ''
           step     = 300
