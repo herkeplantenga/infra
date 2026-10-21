@@ -1,13 +1,4 @@
-/* NovoServe theme for SmokePing 2.9.x. Loaded AFTER the stock
-   css/smokeping-screen.css and only overrides it, so layout and
-   the JS sidebar toggle keep working.
-   Brand values taken from novoserve.com (HubSpot "Spark" theme CSS, Oct 2026):
-     navy  #021C3A  (logo, headings, dark cards)
-     green #11F5AC  (accent, links, buttons, hero headline)
-     blue  #2A6DB5  (secondary buttons/hover)
-     slate #677FA2 / #4B6690 (footer, muted text)
-     mist  #F2F5F5  (light section background)
-   Fonts: Poppins (headings) + Carlito (body), both SIL OFL 1.1, bundled in fonts/. */
+/* NovoServe theme; overrides the stock smokeping-screen.css. Fonts are SIL OFL 1.1. */
 
 @font-face { font-family: "Poppins"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/Poppins-regular.woff2") format("woff2"); }
 @font-face { font-family: "Poppins"; font-weight: 600; font-style: normal; font-display: swap; src: url("fonts/Poppins-600.woff2") format("woff2"); }
@@ -144,6 +135,5 @@ a#menu-button { height: 64px; width: 56px; opacity: .55; }
 .footer a:hover { color: var(--ns-green); }
 .footer b { color: #FFFFFF; font-family: var(--ns-head); }
 .footer small { font-size: 12px; }
-/* <##smokelogo##>/<##rrdlogo##> point at imgurl/smokeping.png + rrdtool.png, which the
-   nixpkgs package does not ship (broken images in the stock page too), so hide them. */
+/* The nixpkgs package doesn't ship the smokeping/rrdtool logos. */
 .ns-poweredby { display: none; }
