@@ -1,0 +1,149 @@
+/* NovoServe theme for SmokePing 2.9.x. Loaded AFTER the stock
+   css/smokeping-screen.css and only overrides it, so layout and
+   the JS sidebar toggle keep working.
+   Brand values taken from novoserve.com (HubSpot "Spark" theme CSS, Oct 2026):
+     navy  #021C3A  (logo, headings, dark cards)
+     green #11F5AC  (accent, links, buttons, hero headline)
+     blue  #2A6DB5  (secondary buttons/hover)
+     slate #677FA2 / #4B6690 (footer, muted text)
+     mist  #F2F5F5  (light section background)
+   Fonts: Poppins (headings) + Carlito (body), both SIL OFL 1.1, bundled in fonts/. */
+
+@font-face { font-family: "Poppins"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/Poppins-regular.woff2") format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 600; font-style: normal; font-display: swap; src: url("fonts/Poppins-600.woff2") format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/Poppins-700.woff2") format("woff2"); }
+@font-face { font-family: "Carlito"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/Carlito-regular.woff2") format("woff2"); }
+@font-face { font-family: "Carlito"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/Carlito-700.woff2") format("woff2"); }
+
+:root {
+    --ns-navy: #021C3A;
+    --ns-navy-2: #0A2A50;
+    --ns-navy-3: #13365F;
+    --ns-green: #11F5AC;
+    --ns-blue: #2A6DB5;
+    --ns-slate: #677FA2;
+    --ns-slate-2: #4B6690;
+    --ns-mist: #F2F5F5;
+    --ns-line: #DCE3EA;
+    --ns-head: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --ns-body: "Carlito", Calibri, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body.ns {
+    background: var(--ns-mist);
+    color: var(--ns-navy);
+    font-family: var(--ns-body);
+    font-size: 14px;
+}
+a { color: var(--ns-blue); }
+a:hover { color: var(--ns-navy); }
+
+h1, h2, .ns h1, .ns h2 { font-family: var(--ns-head); color: var(--ns-navy); }
+
+/* ---- sidebar ---- */
+.sidebar { background: var(--ns-navy); color: #C9D4E3; }
+.sidebar-header {
+    height: 64px; padding: 12px 16px;
+    border-bottom: 1px solid var(--ns-navy-3);
+}
+.ns-brand { display: block; text-decoration: none; }
+.ns-logo { display: block; width: 150px; height: auto; }
+.ns-brand-sub {
+    display: block; margin-top: 6px;
+    font-family: var(--ns-head); font-weight: 600; font-size: 11px;
+    letter-spacing: .14em; text-transform: uppercase; color: #FFFFFF;
+}
+.sidebar-menu { top: 65px; padding-top: 10px; }
+.sidebar ul.menu li { margin: 1px 10px; border: 0; border-radius: 6px; }
+.sidebar ul.menu li a {
+    color: #C9D4E3; font-family: var(--ns-head); font-size: 13px;
+    line-height: 2.2em; padding-left: 10px;
+}
+.sidebar ul.menu li.menuopen,
+.sidebar ul.menu li:hover,
+.sidebar ul.menu li.menuactive { border: 0; background: var(--ns-navy-2); }
+.sidebar ul.menu li:hover > a { color: #FFFFFF; }
+.sidebar ul.menu li a.menulinkactive {
+    color: var(--ns-green); font-weight: 600;
+    box-shadow: inset 3px 0 0 var(--ns-green); border-radius: 6px;
+}
+.sidebar ul.menu li ul { background: transparent; padding: 2px 0 4px 6px; }
+.sidebar ul.menu li ul li a { font-size: 12.5px; }
+.sidebar .filter-text input {
+    background: var(--ns-navy-2); color: #FFFFFF;
+    border: 1px solid var(--ns-navy-3); border-radius: 20px; padding: 7px 12px;
+}
+.sidebar .filter-text input:focus { outline: 2px solid var(--ns-green); }
+.sidebar .hierarchy-popup select { border-radius: 6px; }
+
+/* ---- top bar (white header like novoserve.com) ---- */
+.navbar {
+    height: 64px; background: #FFFFFF; border-bottom: 1px solid var(--ns-line);
+    box-shadow: 0 2px 8px rgba(2, 28, 58, .06); text-shadow: none;
+}
+.navbar .navbar-menu, .navbar .navbar-refresh, .navbar .navbar-user {
+    height: 64px; line-height: 64px; border-color: var(--ns-line);
+}
+a#menu-button { height: 64px; width: 56px; opacity: .55; }
+.navbar .navbar-refresh a {
+    display: inline-block; line-height: 1; padding: 9px 18px; margin-top: 15px;
+    border-radius: 20px; background: var(--ns-green); color: var(--ns-navy);
+    font-family: var(--ns-head); font-weight: 600; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .04em; text-decoration: none;
+}
+.navbar .navbar-refresh a:hover { background: var(--ns-navy); color: #FFFFFF; }
+.navbar .navbar-title {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    line-height: 64px; font-family: var(--ns-head); font-weight: 700;
+    font-size: 15px; letter-spacing: .02em; color: var(--ns-navy); white-space: nowrap;
+}
+.navbar .navbar-user { font-family: var(--ns-head); font-size: 13px; color: var(--ns-slate-2); }
+@media (max-width: 1100px) { .navbar .navbar-title { display: none; } }
+
+/* ---- main ---- */
+.main { display: block; padding-top: 64px; margin: 16px 18px; }
+.ns-pagehead { margin: 8px 5px 14px; }
+.ns-eyebrow {
+    display: inline-block; font-family: var(--ns-head); font-size: 11px; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ns-blue);
+}
+.main h1 { font-size: 28px; line-height: 1.2; font-weight: 700; margin: 4px 0 2px; }
+.main .ns-pagehead h2 { font-family: var(--ns-body); font-size: 15px; line-height: 1.4; color: var(--ns-slate-2); margin: 0; }
+.main .panel, .main .panel-no-border { margin: 6px; vertical-align: top; }
+.main .panel {
+    border: 1px solid var(--ns-line); border-radius: 10px; overflow: hidden;
+    background: #FFFFFF; box-shadow: 0 2px 10px rgba(2, 28, 58, .06);
+}
+.main .panel-heading {
+    background: var(--ns-navy); border-bottom: 3px solid var(--ns-green); box-shadow: none;
+}
+.main .panel-heading h2, .main .panel-heading-no-border h2 {
+    color: #FFFFFF; font-family: var(--ns-head); font-weight: 600; font-size: 13px;
+    line-height: 36px; padding-left: 12px;
+}
+.main .panel-heading h2 a { color: var(--ns-green); text-decoration: none; }
+.main .panel-heading h2 a:hover { text-decoration: underline; }
+.main .panel-body { padding: 8px; }
+.main .panel-body img { display: block; max-width: 100%; height: auto; }
+.main input[type=text] {
+    border: 1px solid var(--ns-line); border-radius: 6px; padding: 5px 8px; font-family: var(--ns-body);
+}
+.main input[type=submit] {
+    border: 0; border-radius: 20px; padding: 7px 18px; cursor: pointer;
+    background: var(--ns-green); color: var(--ns-navy);
+    font-family: var(--ns-head); font-weight: 600;
+}
+.main input[type=submit]:hover { background: var(--ns-blue); color: #FFFFFF; }
+
+/* ---- footer (slate, like novoserve.com) ---- */
+.footer {
+    background: var(--ns-navy); color: #A9B8CC; border-top: 3px solid var(--ns-green);
+    margin-top: 24px; padding-top: 6px; padding-bottom: 6px; min-height: 34px;
+}
+.footer, .footer a { color: #C9D4E3; }
+.footer a:hover { color: var(--ns-green); }
+.footer b { color: #FFFFFF; font-family: var(--ns-head); }
+.footer small { font-size: 12px; }
+/* <##smokelogo##>/<##rrdlogo##> point at imgurl/smokeping.png + rrdtool.png, which the
+   nixpkgs package does not ship (broken images in the stock page too), so hide them. */
+.ns-poweredby { display: none; }
