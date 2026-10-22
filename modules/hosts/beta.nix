@@ -12,6 +12,7 @@ in
       den.aspects.muzionnaire
       den.aspects.calagopus-panel
       den.aspects.calagopus-wings
+      den.aspects.smokeping
     ];
     nixos =
       let
