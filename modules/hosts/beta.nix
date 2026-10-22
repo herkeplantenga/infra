@@ -51,6 +51,15 @@ in
           "8.8.8.8"
         ];
 
+        # Offer beta as a Tailscale exit node. "server" turns on IPv4/IPv6
+        # forwarding; extraSetFlags is re-applied by tailscaled-set on every
+        # boot, so it also works on an already-authenticated node.
+        # The route still has to be approved in the admin console.
+        services.tailscale = {
+          useRoutingFeatures = "server";
+          extraSetFlags = [ "--advertise-exit-node" ];
+        };
+
         system.stateVersion = "26.05";
       };
   };
