@@ -13,6 +13,7 @@ in
       den.aspects.calagopus-panel
       den.aspects.calagopus-wings
       den.aspects.smokeping
+      den.aspects.mailserver
     ];
     nixos =
       let
